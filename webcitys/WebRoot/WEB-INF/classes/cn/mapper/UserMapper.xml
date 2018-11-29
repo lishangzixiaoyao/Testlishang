@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE mapper
+        PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="cn.mapper.UserMapper">
+  <select id="findProvince" resultType="map">
+        select id ,province as provincename from tm_province
+    </select>
+<!--     	public List<HashMap<String,Object>> findCity(Integer pid); -->
+<select id="findCity" resultType="map">
+	SELECT  id ,city as cityName  FROM tm_city WHERE province_id = #{pid}
+</select>
+<!-- public List<HashMap<String,Object>>findArea(Integer cityId); -->
+<select id="findArea" resultType="map">
+	select id,area as areaname from tm_area where city_id = #{cityId}
+</select>
+</mapper>
